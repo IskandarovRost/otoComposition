@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.otocomposition.web.customerdetail.CustomerDetailBrowse"
+        focusComponent="customerDetailsTable"
+        lookupComponent="customerDetailsTable"
+        messagesPack="com.company.otocomposition.web.customerdetail">
+    <dsContext>
+        <groupDatasource id="customerDetailsDs"
+                         class="com.company.otocomposition.entity.CustomerDetail"
+                         view="customerDetail-view">
+            <query>
+                <![CDATA[select e from comp$CustomerDetail e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="customerDetailsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="customerDetailsTable"
+                datasource="customerDetailsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="customerDetailsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="customerDescription"/>
+                <column id="mainAddress.postcode"/>
+                <column id="mainAddress.lineOne"/>
+                <column id="mainAddress.lineTwo"/>
+                <column id="deliveryAddress.postcode"/>
+                <column id="deliveryAddress.lineOne"/>
+                <column id="deliveryAddress.lineTwo"/>
+            </columns>
+            <rows datasource="customerDetailsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="customerDetailsTable.create"/>
+                <button id="editBtn"
+                        action="customerDetailsTable.edit"/>
+                <button id="removeBtn"
+                        action="customerDetailsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

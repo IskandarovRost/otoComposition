@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.otocomposition.web.customerdetail.CustomerDetailEdit"
+        datasource="customerDetailDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.otocomposition.web.customerdetail">
+    <dsContext>
+        <datasource id="customerDetailDs"
+                    class="com.company.otocomposition.entity.CustomerDetail"
+                    view="customerDetail-view">
+            <datasource id="mainAddressDs"
+                        property="mainAddress"/>
+            <datasource id="deliveryAddressDs"
+                        property="deliveryAddress"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="customerDetailDs">
+            <column width="250px">
+                <field property="customerDescription"/>
+                <field datasource="mainAddressDs"
+                       property="postcode"/>
+                <field datasource="mainAddressDs"
+                       property="lineOne"/>
+                <field datasource="mainAddressDs"
+                       property="lineTwo"/>
+            </column>
+        </fieldGroup>
+        <fieldGroup id="deliveryAddressFieldGroup"
+                    datasource="deliveryAddressDs">
+            <column width="250px">
+                <field property="postcode"/>
+                <field property="lineOne"/>
+                <field property="lineTwo"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>
